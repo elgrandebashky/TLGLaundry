@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, abort, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 from sqlalchemy.exc import IntegrityError
@@ -18,6 +18,7 @@ TIME_SLOTS = [
     '9:00 - 10:00 PM',
 ]
 BOOKING_HOURS_PER_DAY = 3
+ADMIN_USERNAME = 'bashky'
 CONSECUTIVE_SLOT_GROUPS = [
     TIME_SLOTS[:8],
     TIME_SLOTS[8:],
@@ -170,6 +171,27 @@ def cancel_booking(booking_id):
     db.session.commit()
     flash('Booking cancelled successfully.', 'success')
     return redirect(url_for('view_bookings'))
+
+# Admin Dashboard Route
+@app.route('/admin')
+@login_required
+def admin_dashboard():
+    if current_user.username != ADMIN_USERNAME:
+        abort(403)
+
+    users = User.query.order_by(User.username).all()
+    bookings = Booking.query.order_by(Booking.date, Booking.id).all()
+    usernames = {user.id: user.username for user in users}
+    booking_counts = {}
+    for booking in bookings:
+        booking_counts[booking.user_id] = booking_counts.get(booking.user_id, 0) + 1
+    return render_template(
+        'admin_dashboard.html',
+        users=users,
+        bookings=bookings,
+        usernames=usernames,
+        booking_counts=booking_counts,
+    )
 
 if __name__ == '__main__':
     with app.app_context():

@@ -35,6 +35,9 @@
                         <span class="current-user-icon" aria-hidden="true">●</span>
                         {{ current_user.username }}
                     </span>
+                    {% if current_user.username == 'bashky' %}
+                        <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+                    {% endif %}
                     <a href="{{ url_for('view_bookings') }}">My bookings</a>
                     <a class="nav-cta" href="{{ url_for('book') }}">Book a slot</a>
                     <a href="{{ url_for('logout') }}">Log out</a>

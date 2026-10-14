@@ -202,6 +202,13 @@ h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
 .pill { padding: .35rem .65rem; color: #26725d; background: var(--mint); border-radius: 999px; font-size: .75rem; font-weight: 700; }
 .empty-state { padding: 2rem 1rem; color: var(--muted); text-align: center; background: #fbfdfc; border: 1px dashed var(--line); border-radius: .9rem; }
 .site-footer { padding: 1.5rem 0; color: var(--muted); border-top: 1px solid var(--line); font-size: .85rem; }
+.admin-section-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.2rem; }
+.admin-section-heading h2 { margin: 0; font-size: 1.8rem; }
+.admin-table-wrap { overflow-x: auto; }
+.admin-table { width: 100%; color: var(--ink); border-collapse: collapse; }
+.admin-table th, .admin-table td { padding: .85rem .7rem; border-bottom: 1px solid var(--line); text-align: left; }
+.admin-table th { color: var(--muted); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.admin-table tbody tr:last-child td { border-bottom: 0; }
 
 :root[data-theme='dark'] .hero-art {
     background: linear-gradient(145deg, #1e5559, #25404b);
