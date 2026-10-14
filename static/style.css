@@ -162,6 +162,9 @@ h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
 .page-heading h1 { margin: .5rem 0; font-size: clamp(2.3rem, 5vw, 3.6rem); }
 .booking-list { display: grid; gap: .85rem; }
 .booking-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.2rem 1.3rem; background: #fbfdfc; border: 1px solid var(--line); border-radius: .9rem; }
+.booking-actions { display: flex; align-items: center; gap: .75rem; }
+.btn-cancel { padding: .45rem .7rem; color: #a64747; background: transparent; border: 1px solid #e3b7b7; border-radius: .55rem; font-size: .8rem; font-weight: 700; }
+.btn-cancel:hover { color: white; background: #a64747; border-color: #a64747; }
 .booking-date { color: var(--muted); font-size: .86rem; }
 .booking-time { font-weight: 700; }
 .pill { padding: .35rem .65rem; color: #26725d; background: var(--mint); border-radius: 999px; font-size: .75rem; font-weight: 700; }
@@ -184,4 +187,6 @@ h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
     .hero { padding-bottom: 3rem; }
     .feature-grid { grid-template-columns: 1fr; }
     .hero-art { min-height: 230px; margin-top: 1rem; }
+    .booking-item { align-items: flex-start; }
+    .booking-actions { flex-direction: column; align-items: flex-end; gap: .5rem; }
 }

@@ -156,8 +156,28 @@ def book():
 @app.route('/view_bookings')
 @login_required
 def view_bookings():
-    bookings = Booking.query.filter_by(user_id=current_user.id).all()
+    bookings = Booking.query.filter_by(user_id=current_user.id).order_by(
+        Booking.date,
+        Booking.id,
+    ).all()
     return render_template('view_bookings.html', bookings=bookings)
+
+# Cancel Booking Route
+@app.route('/cancel_booking/<int:booking_id>', methods=['POST'])
+@login_required
+def cancel_booking(booking_id):
+    booking = Booking.query.filter_by(
+        id=booking_id,
+        user_id=current_user.id,
+    ).first()
+    if booking is None:
+        flash('That booking could not be found.', 'error')
+        return redirect(url_for('view_bookings'))
+
+    db.session.delete(booking)
+    db.session.commit()
+    flash('Booking cancelled successfully.', 'success')
+    return redirect(url_for('view_bookings'))
 
 if __name__ == '__main__':
     with app.app_context():

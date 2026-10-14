@@ -19,7 +19,12 @@
                         <div class="booking-date">{{ booking.date }}</div>
                         <div class="booking-time">{{ booking.time_slot }}</div>
                     </div>
-                    <span class="pill">Confirmed</span>
+                    <div class="booking-actions">
+                        <span class="pill">Confirmed</span>
+                        <form method="POST" action="{{ url_for('cancel_booking', booking_id=booking.id) }}">
+                            <button class="btn btn-cancel" type="submit">Cancel</button>
+                        </form>
+                    </div>
                 </div>
                 {% endfor %}
             </div>
