@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+  <title id="title">Laundromat illustration</title>
+  <desc id="desc">A row of washing machines in a bright laundromat</desc>
+  <rect width="800" height="520" fill="#dff3ed"/>
+  <rect y="330" width="800" height="190" fill="#b9d9d4"/>
+  <rect x="70" y="82" width="660" height="290" rx="20" fill="#f7fbf8"/>
+  <rect x="98" y="111" width="604" height="30" rx="15" fill="#c9ebe3"/>
+  <g fill="#e8f5ef" stroke="#2b7a9e" stroke-width="9">
+    <rect x="112" y="172" width="118" height="150" rx="18"/>
+    <rect x="260" y="172" width="118" height="150" rx="18"/>
+    <rect x="408" y="172" width="118" height="150" rx="18"/>
+    <rect x="556" y="172" width="118" height="150" rx="18"/>
+  </g>
+  <g fill="#9ed2d2" stroke="#1d5e7f" stroke-width="7">
+    <circle cx="171" cy="250" r="43"/>
+    <circle cx="319" cy="250" r="43"/>
+    <circle cx="467" cy="250" r="43"/>
+    <circle cx="615" cy="250" r="43"/>
+  </g>
+  <g fill="#ffffff" opacity=".65">
+    <circle cx="158" cy="235" r="11"/>
+    <circle cx="306" cy="235" r="11"/>
+    <circle cx="454" cy="235" r="11"/>
+    <circle cx="602" cy="235" r="11"/>
+  </g>
+  <g fill="#2b7a9e">
+    <rect x="130" y="188" width="25" height="9" rx="4"/>
+    <rect x="278" y="188" width="25" height="9" rx="4"/>
+    <rect x="426" y="188" width="25" height="9" rx="4"/>
+    <rect x="574" y="188" width="25" height="9" rx="4"/>
+  </g>
+  <path d="M105 410h590" stroke="#638095" stroke-width="8" stroke-linecap="round"/>
+  <path d="M155 410v24M645 410v24" stroke="#638095" stroke-width="8" stroke-linecap="round"/>
+  <g fill="#fffaf3">
+    <circle cx="680" cy="70" r="9"/>
+    <circle cx="715" cy="42" r="5"/>
+  </g>
+</svg>
