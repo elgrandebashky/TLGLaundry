@@ -71,6 +71,18 @@ a:hover { color: var(--ink); }
 .nav-links { display: flex; align-items: center; gap: .35rem; }
 .nav-links a { padding: .6rem .8rem; color: var(--muted); font-size: .9rem; font-weight: 600; }
 .nav-links a:hover { color: var(--ink); }
+.current-user {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    padding: .55rem .7rem;
+    color: var(--ink);
+    background: var(--mint);
+    border-radius: .7rem;
+    font-size: .82rem;
+    font-weight: 700;
+}
+.current-user-icon { color: var(--blue); font-size: .65rem; }
 .theme-toggle {
     display: inline-flex;
     align-items: center;
