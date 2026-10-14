@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Log in — Thomas Laubs Gade 25 - 29{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="auth-card">
+        <div class="eyebrow">Welcome back</div>
+        <h1>Log in to Thomas Laubs Gade 25 - 29</h1>
+        <p class="lead">Your next easy laundry day is waiting.</p>
+        <form method="POST" class="mt-4">
+            <div class="mb-3">
+                <label class="form-label" for="username">Username</label>
+                <input class="form-control" id="username" type="text" name="username" autocomplete="username" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password">Password</label>
+                <input class="form-control" id="password" type="password" name="password" autocomplete="current-password" required>
+            </div>
+            <button class="btn btn-brand w-100 mt-2" type="submit">Log in</button>
+        </form>
+        <p class="text-center mt-4 mb-0 text-secondary">New here? <a href="{{ url_for('register') }}">Create an account</a></p>
+    </div>
+</div>
+{% endblock %}

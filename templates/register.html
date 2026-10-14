@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Create an account — Thomas Laubs Gade 25 - 29{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="auth-card">
+        <div class="eyebrow">Start fresh</div>
+        <h1>Create your account</h1>
+        <p class="lead">Save your slots and make laundry part of the plan.</p>
+        <form method="POST" class="mt-4">
+            <div class="mb-3">
+                <label class="form-label" for="username">Choose a username</label>
+                <input class="form-control" id="username" type="text" name="username" autocomplete="username" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="password">Create a password</label>
+                <input class="form-control" id="password" type="password" name="password" autocomplete="new-password" required>
+            </div>
+            <button class="btn btn-brand w-100 mt-2" type="submit">Create account <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="text-center mt-4 mb-0 text-secondary">Already registered? <a href="{{ url_for('login') }}">Log in</a></p>
+    </div>
+</div>
+{% endblock %}
