@@ -16,15 +16,17 @@
                             <label class="form-label" for="date">Date</label>
                             <input class="form-control" id="date" type="date" name="date" required>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label" for="time_slot">Starting time</label>
-                            <select class="form-select" id="time_slot" name="time_slot" required>
-                                <option value="" selected disabled>Select a time</option>
+                        <div class="col-12">
+                            <label class="form-label">Choose your hours</label>
+                            <div class="time-slot-grid">
                                 {% for time_slot in time_slots %}
-                                    <option value="{{ time_slot }}">{{ time_slot }}</option>
+                                    <label class="time-slot-option">
+                                        <input type="checkbox" name="time_slots" value="{{ time_slot }}">
+                                        <span>{{ time_slot }}</span>
+                                    </label>
                                 {% endfor %}
-                            </select>
-                            <div class="form-text">Your booking will automatically reserve the next 3 consecutive hours.</div>
+                            </div>
+                            <div class="form-text">Select 1, 2 or 3 consecutive hours in one booking.</div>
                         </div>
                     </div>
                     <button class="btn btn-brand w-100 mt-4" type="submit">Confirm booking <span aria-hidden="true">→</span></button>

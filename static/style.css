@@ -172,6 +172,22 @@ h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
 .form-control, .form-select { background-color: var(--surface); }
 .form-control::placeholder { color: var(--muted); }
 .form-control:focus, .form-select:focus { border-color: var(--blue); box-shadow: 0 0 0 .2rem rgba(43, 122, 158, .12); }
+.time-slot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .65rem; }
+.time-slot-option { position: relative; cursor: pointer; }
+.time-slot-option input { position: absolute; opacity: 0; }
+.time-slot-option span {
+    display: block;
+    padding: .8rem .6rem;
+    color: var(--ink);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: .7rem;
+    font-size: .86rem;
+    font-weight: 600;
+    text-align: center;
+}
+.time-slot-option input:checked + span { color: white; background: var(--blue); border-color: var(--blue); }
+.time-slot-option input:focus-visible + span { outline: 3px solid rgba(43, 122, 158, .25); outline-offset: 2px; }
 
 .panel { padding: clamp(1.3rem, 4vw, 2.4rem); }
 .page-heading { margin-bottom: 2rem; }
@@ -205,4 +221,5 @@ h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
     .hero-art { min-height: 230px; margin-top: 1rem; }
     .booking-item { align-items: flex-start; }
     .booking-actions { flex-direction: column; align-items: flex-end; gap: .5rem; }
+    .time-slot-grid { grid-template-columns: 1fr; }
 }

@@ -22,11 +22,6 @@ CONSECUTIVE_SLOT_GROUPS = [
     TIME_SLOTS[:8],
     TIME_SLOTS[8:],
 ]
-BOOKABLE_START_SLOTS = [
-    slot
-    for group in CONSECUTIVE_SLOT_GROUPS
-    for slot in group[:-BOOKING_HOURS_PER_DAY + 1]
-]
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -104,40 +99,37 @@ def logout():
 @login_required
 def book():
     if request.method == 'POST':
-        time_slot = request.form.get('time_slot')
+        selected_slots = request.form.getlist('time_slots')
         date = request.form.get('date')
-        selected_group = next(
-            (group for group in CONSECUTIVE_SLOT_GROUPS if time_slot in group),
-            None,
-        )
-        if selected_group is None or time_slot not in BOOKABLE_START_SLOTS:
-            flash('Please choose a valid time slot.', 'error')
-            return render_template(
-                'book.html',
-                time_slots=BOOKABLE_START_SLOTS,
-            )
 
-        start_index = selected_group.index(time_slot)
-        selected_slots = selected_group[
-            start_index:start_index + BOOKING_HOURS_PER_DAY
-        ]
-        if len(selected_slots) != BOOKING_HOURS_PER_DAY:
-            flash('Choose a starting time with three consecutive available hours.', 'error')
-            return render_template(
-                'book.html',
-                time_slots=BOOKABLE_START_SLOTS,
+        if not selected_slots or len(selected_slots) > BOOKING_HOURS_PER_DAY:
+            flash('Choose between 1 and 3 hours.', 'error')
+            return render_template('book.html', time_slots=TIME_SLOTS)
+
+        selected_indexes = []
+        for selected_slot in selected_slots:
+            slot_group = next(
+                (group for group in CONSECUTIVE_SLOT_GROUPS if selected_slot in group),
+                None,
             )
+            if slot_group is None:
+                flash('Please choose valid time slots.', 'error')
+                return render_template('book.html', time_slots=TIME_SLOTS)
+            selected_indexes.append((slot_group, slot_group.index(selected_slot)))
+
+        groups = {id(group) for group, _ in selected_indexes}
+        indexes = sorted(index for _, index in selected_indexes)
+        if len(groups) != 1 or indexes != list(range(indexes[0], indexes[0] + len(indexes))):
+            flash('Choose consecutive time slots.', 'error')
+            return render_template('book.html', time_slots=TIME_SLOTS)
 
         existing_hours = Booking.query.filter_by(
             user_id=current_user.id,
             date=date,
         ).count()
-        if existing_hours + BOOKING_HOURS_PER_DAY > BOOKING_HOURS_PER_DAY:
+        if existing_hours + len(selected_slots) > BOOKING_HOURS_PER_DAY:
             flash('You can book a maximum of 3 hours per day.', 'error')
-            return render_template(
-                'book.html',
-                time_slots=BOOKABLE_START_SLOTS,
-            )
+            return render_template('book.html', time_slots=TIME_SLOTS)
 
         for selected_slot in selected_slots:
             db.session.add(Booking(
@@ -149,7 +141,7 @@ def book():
         return redirect(url_for('view_bookings'))
     return render_template(
         'book.html',
-        time_slots=BOOKABLE_START_SLOTS,
+        time_slots=TIME_SLOTS,
     )
 
 # View Bookings Route
