@@ -1,0 +1,12 @@
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+Lib/
+Scripts/
+Include/
+share/
+var/
+instance/
+*.db
