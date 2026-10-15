@@ -1,3 +1,5 @@
+import os
+
 from flask import Flask, abort, render_template, request, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
@@ -26,7 +28,10 @@ CONSECUTIVE_SLOT_GROUPS = [
 
 # Initialize Flask app
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///laundry_booking.db'
+database_url = os.getenv('DATABASE_URL', 'sqlite:///laundry_booking.db')
+if database_url.startswith('postgres://'):
+    database_url = database_url.replace('postgres://', 'postgresql://', 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = database_url
 app.config['SECRET_KEY'] = 'your_secret_key'
 
 # Initialize Database and Flask-Login
@@ -45,6 +50,9 @@ class Booking(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     time_slot = db.Column(db.String(50), nullable=False)
     date = db.Column(db.String(50), nullable=False)
+
+with app.app_context():
+    db.create_all()
 
 @login_manager.user_loader
 def load_user(user_id):
