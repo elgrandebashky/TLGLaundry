@@ -157,14 +157,16 @@ h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
     z-index: 1;
     width: 64%;
     padding: 1.4rem;
-    color: white;
-    background: var(--ink);
+    color: rgba(18, 24, 27, .88);
+    background: rgba(255, 255, 255, .28);
+    border: 1px solid rgba(255, 255, 255, .3);
+    backdrop-filter: blur(5px);
     border-radius: 1.25rem;
     transform: rotate(-4deg);
     box-shadow: 0 25px 35px rgba(24, 59, 86, .2);
 }
 .art-card strong { display: block; margin: .4rem 0; font-size: 1.4rem; }
-.art-card small { color: #b7d5dd; }
+.art-card small { color: rgba(18, 24, 27, .68); }
 
 .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .feature-card, .panel, .auth-card { background: var(--surface); border: 1px solid var(--line); border-radius: 1.25rem; box-shadow: 0 10px 30px rgba(24, 59, 86, .04); }
