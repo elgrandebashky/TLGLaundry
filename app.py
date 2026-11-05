@@ -31,13 +31,19 @@ CONSECUTIVE_SLOT_GROUPS = [
 # Initialize Flask app
 app = Flask(__name__)
 
-database_filename = os.getenv('DATABASE_PATH', 'local_laundry.db')
-database_path = (
-    database_filename
-    if os.path.isabs(database_filename)
-    else os.path.join(app.root_path, database_filename)
-)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + database_path.replace('\\', '/')
+database_url = os.getenv('DATABASE_URL')
+if database_url:
+    app.config['SQLALCHEMY_DATABASE_URI'] = database_url
+else:
+    database_filename = os.getenv('DATABASE_PATH', 'local_laundry.db')
+    database_path = (
+        database_filename
+        if os.path.isabs(database_filename)
+        else os.path.join(app.root_path, database_filename)
+    )
+    app.config['SQLALCHEMY_DATABASE_URI'] = (
+        'sqlite:///' + database_path.replace('\\', '/')
+    )
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'local-development-key')
 
