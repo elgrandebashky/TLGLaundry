@@ -23,33 +23,11 @@
             <div class="col-lg-5">
                 <div class="hero-art" aria-label="{{ _('Laundry booking overview') }}">
                     <img class="laundromat-illustration" src="{{ url_for('static', filename='laundromat-photo.png') }}" alt="{{ _('Laundry booking overview') }}">
-                    <div class="art-card">
-                        <small>{{ _('UP NEXT') }}</small>
-                        <strong>{{ _('Wash day, sorted.') }}</strong>
-                        <small>{{ _('Choose a time that works for you.') }}</small>
-                    </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section class="container">
-    <div class="feature-grid">
-        <article class="feature-card">
-            <div class="feature-icon">◷</div>
-            <h3>{{ _('Book in seconds') }}</h3>
-            <p>{{ _('Pick a date and time without the back-and-forth.') }}</p>
-        </article>
-        <article class="feature-card">
-            <div class="feature-icon">✓</div>
-            <h3>{{ _('Always in control') }}</h3>
-            <p>{{ _('Keep every upcoming laundry slot in one clear place.') }}</p>
-        </article>
-        <article class="feature-card">
-            <div class="feature-icon">⌁</div>
-            <h3>{{ _('Made for shared spaces') }}</h3>
-            <p>{{ _('Less waiting, fewer surprises, and a smoother routine.') }}</p>
-        </article>
-    </div>
-</section>
+
 {% endblock %}
