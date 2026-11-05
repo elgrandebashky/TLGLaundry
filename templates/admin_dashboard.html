@@ -1,18 +1,18 @@
 {% extends "base.html" %}
-{% block title %}Admin dashboard — Thomas Laubs Gade 25 - 29{% endblock %}
+{% block title %}{{ _('Admin dashboard') }} — Thomas Laubs Gade 25 - 29{% endblock %}
 {% block content %}
 <div class="container">
     <div class="page-heading">
-        <div class="eyebrow">Administration</div>
-        <h1>Admin dashboard</h1>
-        <p class="lead mb-0">Registered users and their booking activity.</p>
+        <div class="eyebrow">{{ _('Administration') }}</div>
+        <h1>{{ _('Admin dashboard') }}</h1>
+        <p class="lead mb-0">{{ _('Registered users and their booking activity.') }}</p>
     </div>
 
     <div class="panel mb-4">
         <div class="admin-section-heading">
             <div>
-                <h2>Registered users</h2>
-                <p class="text-muted mb-0">{{ users|length }} registered user(s)</p>
+                <h2>{{ _('Registered users') }}</h2>
+                <p class="text-muted mb-0">{{ users|length }} {{ _('registered user(s)') }}</p>
             </div>
         </div>
         {% if users %}
@@ -22,7 +22,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Username</th>
-                            <th>Bookings</th>
+                            <th>{{ _('Bookings') }}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,15 +37,15 @@
                 </table>
             </div>
         {% else %}
-            <div class="empty-state">No users have registered yet.</div>
+            <div class="empty-state">{{ _('No users have registered yet.') }}</div>
         {% endif %}
     </div>
 
     <div class="panel">
         <div class="admin-section-heading">
             <div>
-                <h2>All bookings</h2>
-                <p class="text-muted mb-0">{{ bookings|length }} booking slot(s)</p>
+                <h2>{{ _('All bookings') }}</h2>
+                <p class="text-muted mb-0">{{ bookings|length }} {{ _('booking slot(s)') }}</p>
             </div>
         </div>
         {% if bookings %}
@@ -53,15 +53,15 @@
                 <table class="admin-table">
                     <thead>
                         <tr>
-                            <th>User</th>
-                            <th>Date</th>
-                            <th>Time slot</th>
+                            <th>{{ _('User') }}</th>
+                            <th>{{ _('Date') }}</th>
+                            <th>{{ _('Time slot') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for booking in bookings %}
                             <tr>
-                                <td>{{ usernames.get(booking.user_id, 'Unknown user') }}</td>
+                                <td>{{ usernames.get(booking.user_id, _('Unknown user')) }}</td>
                                 <td>{{ booking.date }}</td>
                                 <td>{{ booking.time_slot }}</td>
                             </tr>
@@ -70,7 +70,7 @@
                 </table>
             </div>
         {% else %}
-            <div class="empty-state">No bookings have been made yet.</div>
+            <div class="empty-state">{{ _('No bookings have been made yet.') }}</div>
         {% endif %}
     </div>
 </div>

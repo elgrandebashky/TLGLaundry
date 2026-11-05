@@ -1,23 +1,23 @@
 {% extends "base.html" %}
-{% block title %}Book a slot — Thomas Laubs Gade 25 - 29{% endblock %}
+{% block title %}{{ _('Book a slot') }} — Thomas Laubs Gade 25 - 29{% endblock %}
 {% block content %}
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-lg-7">
             <div class="page-heading">
-                <div class="eyebrow">Plan ahead</div>
-                <h1>Book your laundry slot</h1>
-                <p class="lead">Choose a day and a time that fits your routine.</p>
+                <div class="eyebrow">{{ _('Plan ahead') }}</div>
+                <h1>{{ _('Book your laundry slot') }}</h1>
+                <p class="lead">{{ _('Choose a day and a time that fits your routine.') }}</p>
             </div>
             <div class="panel">
                 <form method="POST">
                     <div class="row g-3">
                         <div class="col-md-6">
-                            <label class="form-label" for="date">Date</label>
+                            <label class="form-label" for="date">{{ _('Date') }}</label>
                             <input class="form-control" id="date" type="date" name="date" required>
                         </div>
                         <div class="col-12">
-                            <label class="form-label">Choose your hours</label>
+                            <label class="form-label">{{ _('Choose your hours') }}</label>
                             <div class="time-slot-grid">
                                 {% for time_slot in time_slots %}
                                     <label class="time-slot-option">
@@ -26,10 +26,10 @@
                                     </label>
                                 {% endfor %}
                             </div>
-                            <div class="form-text">Select 1, 2 or 3 consecutive hours in one booking.</div>
+                            <div class="form-text">{{ _('Select 1, 2 or 3 consecutive hours in one booking.') }}</div>
                         </div>
                     </div>
-                    <button class="btn btn-brand w-100 mt-4" type="submit">Confirm booking <span aria-hidden="true">→</span></button>
+                    <button class="btn btn-brand w-100 mt-4" type="submit">{{ _('Confirm booking') }} <span aria-hidden="true">→</span></button>
                 </form>
             </div>
         </div>

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}My bookings — Thomas Laubs Gade 25 - 29{% endblock %}
+{% block title %}{{ _('My bookings') }} — Thomas Laubs Gade 25 - 29{% endblock %}
 {% block content %}
 <div class="container">
     <div class="page-heading d-flex flex-wrap justify-content-between align-items-end gap-3">
         <div>
-            <div class="eyebrow">Your schedule</div>
-            <h1>My bookings</h1>
-            <p class="lead mb-0">Everything you have planned, at a glance.</p>
+            <div class="eyebrow">{{ _('Your schedule') }}</div>
+            <h1>{{ _('My bookings') }}</h1>
+            <p class="lead mb-0">{{ _('Everything you have planned, at a glance.') }}</p>
         </div>
-        <a class="btn btn-brand" href="{{ url_for('book') }}">Book another slot <span aria-hidden="true">→</span></a>
+        <a class="btn btn-brand" href="{{ url_for('book') }}">{{ _('Book another slot') }} <span aria-hidden="true">→</span></a>
     </div>
     <div class="panel">
         {% if bookings %}
@@ -20,9 +20,9 @@
                         <div class="booking-time">{{ booking.time_slot }}</div>
                     </div>
                     <div class="booking-actions">
-                        <span class="pill">Confirmed</span>
+                        <span class="pill">{{ _('Confirmed') }}</span>
                         <form method="POST" action="{{ url_for('cancel_booking', booking_id=booking.id) }}">
-                            <button class="btn btn-cancel" type="submit">Cancel</button>
+                            <button class="btn btn-cancel" type="submit">{{ _('Cancel') }}</button>
                         </form>
                     </div>
                 </div>
@@ -30,9 +30,9 @@
             </div>
         {% else %}
             <div class="empty-state">
-                <h3>No bookings yet</h3>
-                <p>When you reserve a slot, it will show up here.</p>
-                <a class="btn btn-brand mt-2" href="{{ url_for('book') }}">Make your first booking</a>
+                <h3>{{ _('No bookings yet') }}</h3>
+                <p>{{ _('When you reserve a slot, it will show up here.') }}</p>
+                <a class="btn btn-brand mt-2" href="{{ url_for('book') }}">{{ _('Make your first booking') }}</a>
             </div>
         {% endif %}
     </div>

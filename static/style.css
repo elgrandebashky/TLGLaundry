@@ -71,6 +71,19 @@ a:hover { color: var(--ink); }
 .nav-links { display: flex; align-items: center; gap: .35rem; }
 .nav-links a { padding: .6rem .8rem; color: var(--muted); font-size: .9rem; font-weight: 600; }
 .nav-links a:hover { color: var(--ink); }
+.language-form { margin: 0; }
+.language-toggle {
+    padding: .55rem .7rem;
+    color: var(--muted);
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: .7rem;
+    font: inherit;
+    font-size: .82rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.language-toggle:hover { color: var(--ink); border-color: var(--blue); }
 .current-user {
     display: inline-flex;
     align-items: center;
