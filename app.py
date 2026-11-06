@@ -6,18 +6,18 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from sqlalchemy.exc import IntegrityError
 
 TIME_SLOTS = [
-    '8:00 - 9:00 AM',
-    '9:00 - 10:00 AM',
-    '10:00 - 11:00 AM',
-    '11:00 AM - 12:00 PM',
-    '12:00 - 1:00 PM',
-    '1:00 - 2:00 PM',
-    '2:00 - 3:00 PM',
-    '3:00 - 4:00 PM',
-    '6:00 - 7:00 PM',
-    '7:00 - 8:00 PM',
-    '8:00 - 9:00 PM',
-    '9:00 - 10:00 PM',
+    '08:00 - 09:00',
+    '09:00 - 10:00',
+    '10:00 - 11:00',
+    '11:00 - 12:00',
+    '12:00 - 13:00',
+    '13:00 - 14:00',
+    '14:00 - 15:00',
+    '15:00 - 16:00',
+    '18:00 - 19:00',
+    '19:00 - 20:00',
+    '20:00 - 21:00',
+    '21:00 - 22:00',
 ]
 BOOKING_HOURS_PER_DAY = 3
 ADMIN_USERNAME = 'bashky'
